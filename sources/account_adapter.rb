@@ -13,6 +13,11 @@ class AccountAdapter < SourceAdapter
   end
  
   def query(params=nil)
+  end
+
+  def search(params)
+    p params
+    
     client = Savon::Client.new do
       wsdl.document = "http://erp.esworkplace.sap.com/sap/bc/srt/wsdl/bndg_DF530386F51A60F18F0400145E5ADE89/wsdl11/allinone/standard/document?sap-client=800"
       http.auth.basic("P1144646", "9431Moldina526")
@@ -23,7 +28,7 @@ class AccountAdapter < SourceAdapter
                 <Common>
                    <Name>
                       <FirstLineName></FirstLineName>
-                      <SecondLineName>Becker</SecondLineName>
+                      <SecondLineName>#{params['secondLineName']}</SecondLineName>
                    </Name>
                 </Common>
              </CustomerSelectionByNameAndAddress>

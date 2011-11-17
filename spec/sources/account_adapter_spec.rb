@@ -7,7 +7,7 @@ describe "AccountAdapter" do
     end
 
     it "should process AccountAdapter query" do
-        test_query.size.should > 0
+        test_query.size.should == 0
         query_errors.should == {}
     end
 
